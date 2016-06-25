@@ -19,10 +19,10 @@ div {
 
 
 .button {
-  background-color: #f4511e;
-  border: 1px solid #992400;
-  color: #992400;
-  text-align: center;
+  background-color: #white;
+  border: 2px solid #black;
+  color: #black;
+  text-align: right;
   font-size: 28px;
   padding: 20px;
   width: 100%;

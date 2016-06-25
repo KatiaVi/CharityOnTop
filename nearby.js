@@ -19,11 +19,12 @@ function makeUL(data) {
         div.style.width = '100%';
         div.style.height='200px';
         div.style.border="3px solid #C1C3D1";
-        div.style.color = "white";
+        div.style.color = "black";
+        div.style.fontSize="80px";
 
 
-        div.style.background = "orange";
-        div.style.textAlign="center";
+        div.style.background = "white";
+        div.style.textAlign="left";
         div.style.padding="-2px 2px 10px";
         div.style.margin = "5px 5px 5px 5px";
         
