@@ -6,6 +6,9 @@
 <script src="tabletop.js"></script>
 <script src='https://api.mapbox.com/mapbox.js/v2.2.1/mapbox.js'></script>
 <link href='https://api.mapbox.com/mapbox.js/v2.2.1/mapbox.css' rel='stylesheet' />
+<script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwZYJYwb6FV7eE4O-Vpa_JQxNUpY3UaSo&callback=initMap">
+    </script>
 <title>Charity on Top</title>
 </head>
 <body>
@@ -19,57 +22,13 @@
 <ul class="table-title">
 <li id="map">
 	<script>
-L.mapbox.accessToken = 'pk.eyJ1IjoibGFndWlsYXI5IiwiYSI6IjFkZjExM2FiNmNlOTUwNWZmMjAxMDJkMTIzZjYwNjI2In0.7ecizymZUbGVfufa8dEkQw';
-var map = L.mapbox.map('map', 'mapbox.streets')
-    .setView([41.88750, -87.630000], 15);
-
-
-
-// L.marker is a low-level marker constructor in Leaflet.  <!-- merchandise mart-->
-L.marker([41.888244, -87.635388], {
-    icon: L.mapbox.marker.icon({
-        'marker-size': 'large',
-        'marker-symbol': 'commercial',
-        'marker-color': '#0000FF'
-    })
-}).addTo(map);
-
-
-// L.marker is a low-level marker constructor in Leaflet.  <!-- GROUPON--!>
-L.marker([41.896917,-87.643547], {
-    icon: L.mapbox.marker.icon({
-        'marker-size': 'large',
-        'marker-symbol': 'commercial',
-        'marker-color': '#6AB475'
-    })
-}).addTo(map);
-
-// L.marker is a low-level marker constructor in Leaflet. <!--joffrey-->
-L.marker([41.884657,-87.627310], {
-    icon: L.mapbox.marker.icon({
-        'marker-size': 'large',
-        'marker-symbol': 'theatre',
-        'marker-color': '#000000'
-    })
-}).addTo(map);
-
-// L.marker is a low-level marker constructor in Leaflet.
-L.marker([41.881074,-87.641237], {
-    icon: L.mapbox.marker.icon({
-        'marker-size': 'large',
-        'marker-symbol': 'restaurant',
-        'marker-color': '#FF0000'
-    })
-}).addTo(map);
-
-// L.marker is a low-level marker constructor in Leaflet.
-L.marker([41.876178,-87.628260], {
-    icon: L.mapbox.marker.icon({
-        'marker-size': 'large',
-        'marker-symbol': 'library',
-        'marker-color': '#800000'
-    })
-}).addTo(map);
+var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -34.397, lng: 150.644},
+          zoom: 8
+        });
+      }
 </script>
 </li>
 
