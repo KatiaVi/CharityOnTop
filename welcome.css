@@ -1,4 +1,3 @@
-
 .center {
     margin: 0px;
     width: 100%;
@@ -15,6 +14,7 @@ img {
 
 div {
     width: 100%;
+
 }
 
 
@@ -76,8 +76,8 @@ input[type=text]{
 	color:#bcbcbc;
 }
 .lighter, .light, .dark {
-	width:100%;
-	height:100px;
+	width:95%;
+	height:50px;
 	padding:40px 25px;
 }
 
