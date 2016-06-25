@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="nearby.css">
+<link rel="stylesheet" type="text/css" href="index.css">
 <script src="nearby.js"></script>
 <script src="tabletop.js"></script>
 <script src='https://api.mapbox.com/mapbox.js/v2.2.1/mapbox.js'></script>
@@ -20,15 +20,22 @@
 
 </style>
 <ul class="table-title">
-<li id="map">
+<li id="map" onload="initialize();">
 	<script>
-var map;
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -34.397, lng: 150.644},
-          zoom: 8
-        });
-      }
+
+  var map;
+  function initMap() {
+    geocoder = new google.maps.Geocoder();
+    var latlng = new google.maps.LatLng(-34.397, 150.644);
+    var mapOptions = {
+      zoom: 8,
+      center: latlng
+    }
+    map = new google.maps.Map(document.getElementById("map"), mapOptions);
+  }
+
+  
+     
 </script>
 </li>
 

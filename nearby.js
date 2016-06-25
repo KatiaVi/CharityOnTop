@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
     var URL = 'https://docs.google.com/spreadsheets/d/1ywvCOrEAcT_LpFQR5DiPtDoM-ISOrCGYIRQmnfUZK6c/pubhtml';
     Tabletop.init( { key: URL, callback: makeUL, simpleSheet: true } )
+    Tabletop.init( { key: URL, callback: codeLAddress, simpleSheet: true } )
+
    
   //Tabletop.init( { key: URL, callback: searchByLocation, simpleSheet: true } )
    
@@ -52,10 +54,50 @@ function makeUL(data) {
     }
 	}
 
-function searchByLocation(data){
-	console.log("in Here");
-	for(var i = 0; i < data.length; i++) {
-		//if(data[i].)
-	}
+    function codeLAddress(data) {
+        console.log("fine");
+        for (var i = 0; i < data.length; i++) {
+            var address = data[i].Location1;
+            console.log(address);
+            geocoder.geocode( { 'address': address}, function(results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    map.setCenter(results[0].geometry.location);
+                    var marker = new google.maps.Marker({
+                        map: map,
+                        position: results[0].geometry.location
+                    });
+                } 
+                else {
+                    alert("Geocode was not successful for the following reason: " + status);
+                }
+            });
 
-}
+        }
+        
+        
+    };  
+    
+    
+  
+/*
+    var oldID='post_';
+    list.addEventListener('click', function(e) {
+    
+   
+    var target = e.target; // Clicked element
+    
+    while (target && target.parentNode !== list) {
+        target = target.parentNode;
+         // If the clicked element isn't a direct child
+        if(!target) { alert("NO");return; } // If element doesn't exist
+    }
+
+    if (target.tagName === 'DIV'){
+        alert("yes");
+        alert(target.id);
+
+        
+
+    }
+
+*/
