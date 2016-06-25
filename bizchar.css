@@ -38,8 +38,8 @@ div {
 }
 
 .button span:after {
-  content: '       >>';
-  position: 60%;
+  content: '<<';
+  position: 20%;
   opacity: 0;
   top: 0;
   right: -20px;
