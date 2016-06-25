@@ -4,14 +4,81 @@
 <link rel="stylesheet" type="text/css" href="index.css">
 <script src="nearby.js"></script>
 <script src="tabletop.js"></script>
-
+<script src='https://api.mapbox.com/mapbox.js/v2.2.1/mapbox.js'></script>
+<link href='https://api.mapbox.com/mapbox.js/v2.2.1/mapbox.css' rel='stylesheet' />
 <title>Charity on Top</title>
 </head>
 <body>
+<style>
+  body { margin:0; padding:0;}
 
-<div id="map"><img src="img/map.jpg" height="40%" width="100%"></div>
-<div id="results">
+  #map { top:0; bottom:0; height:1000px;width:100%; }
+  #results{top:0; bottom:0; margin-right:20px;width:100%;height:1200px;overflow-y:scroll;  }
 
-</div>
+</style>
+<ul class="table-title">
+<li id="map">
+	<script>
+L.mapbox.accessToken = 'pk.eyJ1IjoibGFndWlsYXI5IiwiYSI6IjFkZjExM2FiNmNlOTUwNWZmMjAxMDJkMTIzZjYwNjI2In0.7ecizymZUbGVfufa8dEkQw';
+var map = L.mapbox.map('map', 'mapbox.streets')
+    .setView([41.88750, -87.630000], 15);
+
+
+
+// L.marker is a low-level marker constructor in Leaflet.  <!-- merchandise mart-->
+L.marker([41.888244, -87.635388], {
+    icon: L.mapbox.marker.icon({
+        'marker-size': 'large',
+        'marker-symbol': 'commercial',
+        'marker-color': '#0000FF'
+    })
+}).addTo(map);
+
+
+// L.marker is a low-level marker constructor in Leaflet.  <!-- GROUPON--!>
+L.marker([41.896917,-87.643547], {
+    icon: L.mapbox.marker.icon({
+        'marker-size': 'large',
+        'marker-symbol': 'commercial',
+        'marker-color': '#6AB475'
+    })
+}).addTo(map);
+
+// L.marker is a low-level marker constructor in Leaflet. <!--joffrey-->
+L.marker([41.884657,-87.627310], {
+    icon: L.mapbox.marker.icon({
+        'marker-size': 'large',
+        'marker-symbol': 'theatre',
+        'marker-color': '#000000'
+    })
+}).addTo(map);
+
+// L.marker is a low-level marker constructor in Leaflet.
+L.marker([41.881074,-87.641237], {
+    icon: L.mapbox.marker.icon({
+        'marker-size': 'large',
+        'marker-symbol': 'restaurant',
+        'marker-color': '#FF0000'
+    })
+}).addTo(map);
+
+// L.marker is a low-level marker constructor in Leaflet.
+L.marker([41.876178,-87.628260], {
+    icon: L.mapbox.marker.icon({
+        'marker-size': 'large',
+        'marker-symbol': 'library',
+        'marker-color': '#800000'
+    })
+}).addTo(map);
+</script>
+</li>
+
+	
+
+<li id="results"></li>
+	
+
+</ul>
+
 </body>
 </html> 
