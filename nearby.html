@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="index.css">
+<link rel="stylesheet" type="text/css" href="nearby.css">
 <script src="nearby.js"></script>
 <script src="tabletop.js"></script>
 <script src='https://api.mapbox.com/mapbox.js/v2.2.1/mapbox.js'></script>
@@ -14,28 +14,49 @@
 <body>
 <style>
   body { margin:0; padding:0;}
+  ul{display:inline;top:10px;bottom:10px;}
+  #input{top:20px; bottom:20px; height:5%;width:90%; }
 
-  #map { top:0; bottom:0; height:1000px;width:100%; }
-  #results{top:0; bottom:0; margin-right:20px;width:100%;height:1200px;overflow-y:scroll;  }
+  #map { top:0px; bottom:10px; height:900px;width:100%; }
+  #results{top:0px; bottom:0; margin-right:20px;width:100%;height:1200px;overflow-y:scroll;  }
 
 </style>
 <ul class="table-title">
-<li id="map" onload="initialize();">
+<li id="input"><form>
+	<span><input id = "address" type="text" 
+	class="search rounded" 
+	placeholder="Enter Current Location"
+	style="position:absolute; top:2%; left:2%; width:87%; height:5%; margin-bottom:30px;font-size:30px;  
+   ">
+    
+	</span>
+
+</form>
+	<span><input id="submit" type="image" src="img/search.png" style="height:10em; width: auto; float: right;" ></span>
+	
+
+ 
+
+	
+	
+</li>	
+<li id="map">
 	<script>
+var map;
 
-  var map;
-  function initMap() {
-    geocoder = new google.maps.Geocoder();
-    var latlng = new google.maps.LatLng(-34.397, 150.644);
-    var mapOptions = {
-      zoom: 8,
-      center: latlng
-    }
-    map = new google.maps.Map(document.getElementById("map"), mapOptions);
-  }
+      function initMap() {
+      	var geocoder= new google.maps.Geocoder(); 
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -34.397, lng: 150.644},
+          zoom: 13
+        });
 
-  
-     
+        document.getElementById('submit').addEventListener('click', function() {
+        geocodeAddress(geocoder, map);
+        });
+
+      }
+
 </script>
 </li>
 
@@ -44,7 +65,7 @@
 <li id="results"></li>
 	
 
-</ul>
+</li>
 
 </body>
 </html> 

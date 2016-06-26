@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
 function makeUL(data) {
 
  var list = document.createElement('ul');
+ list.style.border="8px solid #C1C3D1";
    console.log("makingList"); 
     
 
@@ -19,10 +20,10 @@ function makeUL(data) {
         // Create the div item:
         var div = document.createElement('div');
         div.style.width = '100%';
-        div.style.height='200px';
+        div.style.height='80px';
         div.style.border="3px solid #C1C3D1";
         div.style.color = "black";
-        div.style.fontSize="80px";
+        div.style.fontSize="50px";
 
 
         div.style.background = "white";
@@ -53,22 +54,35 @@ function makeUL(data) {
         document.getElementById('post_'+i).textContent = data[i].Name;
     }
 	}
-
+    function delayBy(delay) {
+        setTimeout(function(){ console.log("pause") }, delay);
+}
+    
+         
     function codeLAddress(data) {
+        initMap();
         console.log("fine");
+        var delay = 100;
+        var geocoder= new google.maps.Geocoder();
+       
         for (var i = 0; i < data.length; i++) {
             var address = data[i].Location1;
             console.log(address);
             geocoder.geocode( { 'address': address}, function(results, status) {
                 if (status == google.maps.GeocoderStatus.OK) {
-                    map.setCenter(results[0].geometry.location);
+                    
                     var marker = new google.maps.Marker({
                         map: map,
                         position: results[0].geometry.location
                     });
+                    
                 } 
                 else {
-                    alert("Geocode was not successful for the following reason: " + status);
+                    i--;
+
+                    delay++;
+                    delayBy(delay);
+                    
                 }
             });
 
@@ -76,6 +90,18 @@ function makeUL(data) {
         
         
     };  
+
+     function geocodeAddress(geocoder, resultsMap) {
+        var address = document.getElementById('address').value;
+        geocoder.geocode({'address': address}, function(results, status) {
+          if (status === google.maps.GeocoderStatus.OK) {
+            resultsMap.setCenter(results[0].geometry.location);
+            
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
+        });
+      }
     
     
   
