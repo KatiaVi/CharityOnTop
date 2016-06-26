@@ -56,10 +56,10 @@ function makeUL(data) {
         document.getElementById('post_'+i).textContent = data[i].Name;
 
         }
-          list.addEventListener('click', function(e) {
+var oldID='post_';
+list.addEventListener('click', function(e) {
     
-   
-    var target = e.target; // Clicked element
+   var target = e.target; // Clicked element
     
     while (target && target.parentNode !== list) {
         target = target.parentNode;
@@ -68,9 +68,81 @@ function makeUL(data) {
     }
 
     if (target.tagName === 'DIV'){
-        alert("yes");
-        alert(target.id);
-        document.getElementById(target.id).style.background = "#d3d3d3"
+        
+        document.getElementById(target.id).style.background = "#d3d3d3";
+        delayBy(700);
+         window.location = "description.html";
+         if(oldID!='post_'){
+            document.getElementById('pTitle').innerHTML = '';
+            document.getElementById('image').innerHTML = '';
+            document.getElementById('Name').innerHTML = '';
+            document.getElementById('des').innerHTML = '';
+            
+        }
+
+
+        
+        //display title
+
+        var h = document.createElement('h1');
+        var t = document.createTextNode(data[i].Name);
+        h.appendChild(t);
+        document.getElementById('pTitle').appendChild(h);
+
+        //display other elements
+        var id = target.id;
+        var idNew =String(id);
+        var i = idNew.split('_').pop();
+        
+        //create a break
+        var br = document.createElement('br');
+        document.getElementById('pTitle').appendChild(br);
+
+        //create the charity name
+        var p= document.createElement('p');
+        
+        var t = document.createTextNode(data[i].charity);
+        p.appendChild(t);
+        document.getElementById('Name').appendChild(p);
+        //create the type
+        var icon = document.createElement('p');
+        var iconT = document.createTextNode(data[i].Type);
+        icon.appendChild(iconT);
+        document.getElementById('type').appendChild(iconT)
+        //create a break
+        var br = document.createElement('br');
+        document.getElementById('Name').appendChild(br);
+        //create a break
+        var br = document.createElement('br');
+        document.getElementById('Name').appendChild(br);
+        //create a break
+        var br = document.createElement('br');
+        document.getElementById('Name').appendChild(br);
+
+
+
+         //create a break
+        var br = document.createElement('br');
+        document.getElementById('image').appendChild(br);
+       
+
+        //create the description
+        var d= document.createElement('p');
+        var t = document.createTextNode(data[i].description);
+        var c=d.appendChild(t);
+        document.getElementById('des').appendChild(c);
+        
+
+
+        oldID=target.id;
+
+        
+
+
+    
+
+       
+
 
         
             
@@ -114,7 +186,7 @@ function GetRoute() {
     function codeLAddress(data) {
         initMap();
         console.log("fine");
-        var delay = 100;
+        var delay = 50;
         var geocoder= new google.maps.Geocoder();
        
         for (var i = 0; i < data.length; i++) {
