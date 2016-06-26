@@ -37,14 +37,15 @@ function makeUL(data) {
 
 
         //create list item
-        var a = document.createElement('a');
-        var item = document.createElement('li');
+        var a = document.createElement('LINK');
         
         
-        a.setAttribute('href', '#results');
         
-        item.appendChild(a);
-        div.appendChild(item);
+        a.setAttribute('href', '#popUp');
+        
+
+        
+        div.appendChild(a);
         div.setAttribute('id', 'post_'+i);
         
 
@@ -64,85 +65,86 @@ list.addEventListener('click', function(e) {
     while (target && target.parentNode !== list) {
         target = target.parentNode;
          // If the clicked element isn't a direct child
-        if(!target) { alert("NO");return; } // If element doesn't exist
+        if(!target) { return; } // If element doesn't exist
     }
 
     if (target.tagName === 'DIV'){
         
         document.getElementById(target.id).style.background = "#d3d3d3";
-        delayBy(700);
-         window.location = "description.html";
+        delayBy(2000);
+        window.location = "#des"
+         var id = target.id;
+        var idNew =String(id);
+        var i = idNew.split('_').pop();
          if(oldID!='post_'){
             document.getElementById('pTitle').innerHTML = '';
-            document.getElementById('image').innerHTML = '';
-            document.getElementById('Name').innerHTML = '';
+            document.getElementById('address').innerHTML = '';
+            document.getElementById('type').innerHTML = '';
             document.getElementById('des').innerHTML = '';
+            document.getElementById('image').innerHTML = '';
             
         }
 
+       // document.documentElement.innerHTML = '<body></body>';
 
+         //(document.getElementById("table-title")).removeChild((document.getElementById("input")));
+        //(document.getElementById("table-title")).removeChild((document.getElementById("map")));
+        //(document.getElementById("table-title")).removeChild((document.getElementById("results")));
+        
+        
         
         //display title
+        var h= document.createElement('h1');
+        var t = document.createTextNode(data[i].Name+"  is Partnering With " + data[i].charity + " at " + data[i].Location1);
+        var c=h.appendChild(t);
+        document.getElementById('pTitle').appendChild(c);
+        
 
-        var h = document.createElement('h1');
-        var t = document.createTextNode(data[i].Name);
-        h.appendChild(t);
-        document.getElementById('pTitle').appendChild(h);
+        
 
         //display other elements
-        var id = target.id;
-        var idNew =String(id);
-        var i = idNew.split('_').pop();
+        
+       
+       
         
         //create a break
         var br = document.createElement('br');
         document.getElementById('pTitle').appendChild(br);
 
-        //create the charity name
-        var p= document.createElement('p');
-        
-        var t = document.createTextNode(data[i].charity);
-        p.appendChild(t);
-        document.getElementById('Name').appendChild(p);
-        //create the type
-        var icon = document.createElement('p');
-        var iconT = document.createTextNode(data[i].Type);
-        icon.appendChild(iconT);
-        document.getElementById('type').appendChild(iconT)
+       
         //create a break
         var br = document.createElement('br');
-        document.getElementById('Name').appendChild(br);
+        document.getElementById('type').appendChild(br);
         //create a break
         var br = document.createElement('br');
-        document.getElementById('Name').appendChild(br);
-        //create a break
-        var br = document.createElement('br');
-        document.getElementById('Name').appendChild(br);
+        document.getElementById('type').appendChild(br);
 
 
 
-         //create a break
-        var br = document.createElement('br');
-        document.getElementById('image').appendChild(br);
+       
        
 
-        //create the description
+       
+
+        var br = document.createElement('br');
+        document.getElementById('address').appendChild(br);
+
         var d= document.createElement('p');
-        var t = document.createTextNode(data[i].description);
+        var t = document.createTextNode(data[i].des);
         var c=d.appendChild(t);
         document.getElementById('des').appendChild(c);
+
+       //create the image
+        var x = document.createElement('IMG');
+        x.setAttribute('src', data[i].image);
+        x.setAttribute('width', '100%');
+        x.setAttribute('width', '100%');
+        
+        document.getElementById('image').appendChild(x);
         
 
 
         oldID=target.id;
-
-        
-
-
-    
-
-       
-
 
         
             
@@ -150,32 +152,11 @@ list.addEventListener('click', function(e) {
     }
  
 });
+//finally return
+;
 }    
 
-function GetRoute() {
-    
- 
-    //*********DISTANCE AND DURATION**********************//
-    var service = new google.maps.DistanceMatrixService();
-    service.getDistanceMatrix({
-        origins: [origin],
-        destinations: [destination],
-        travelMode: google.maps.TravelMode.DRIVING,
-        unitSystem: google.maps.UnitSystem.METRIC,
-        avoidHighways: false,
-        avoidTolls: false
-    }, function (response, status) {
-        if (status == google.maps.DistanceMatrixStatus.OK && response.rows[0].elements[0].status != "ZERO_RESULTS") {
-            var distance = response.rows[0].elements[0].distance.text;
-            
-            return distance;
- 
-        } 
-        else {
-            alert("Unable to find the distance via road.");
-        }
-    });
-}
+
 
 
     function delayBy(delay) {

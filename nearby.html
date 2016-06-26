@@ -4,24 +4,32 @@
 <link rel="stylesheet" type="text/css" href="nearby.css">
 <script src="nearby.js"></script>
 <script src="tabletop.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
 <script src='https://api.mapbox.com/mapbox.js/v2.2.1/mapbox.js'></script>
 <link href='https://api.mapbox.com/mapbox.js/v2.2.1/mapbox.css' rel='stylesheet' />
 <script async defer
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwZYJYwb6FV7eE4O-Vpa_JQxNUpY3UaSo&callback=initMap">
     </script>
+
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 <title>Charity on Top</title>
 </head>
 <body>
 <style>
   body { margin:0; padding:0;}
   ul{display:inline;top:10px;bottom:10px;}
-  #input{top:20px; bottom:20px; height:5%;width:90%; }
+  #input{top:20px; bottom:20px; height:3%;width:90%; }
 
-  #map { top:0px; bottom:10px; height:900px;width:100%; }
-  #results{top:0px; bottom:0; margin-right:20px;width:100%;height:1200px;overflow-y:scroll;  }
+  #map { top:0px; bottom:10px; height:700px;width:100%; }
+  #results{top:0px; bottom:0; margin-right:20px;width:100%;height:900px;overflow-y:scroll;  }
+  #popUp{font-color:white;}
 
 </style>
-<ul class="table-title">
+
+
+
+<ul id="table-title">
 <li id="input"><form>
 	<span><input id = "address" type="text" 
 	class="search rounded" 
@@ -58,16 +66,48 @@ var destination;
         });
 
       }
-      
+
 
 </script>
 </li>
-
+ 
 	
 
 <li id="results"></li>
 	
 
+</li>
+
+<li id = "popUp">
+	<div class="part"id="display">
+	
+	<div id = "pTitle">
+		
+	</div>
+	
+
+	
+	<div id="charity">
+		
+	</div>
+	
+	<div id="type">
+		
+	</div>
+
+		<div id = "image">
+	</div>
+	<div id = "address"> 
+		 
+	</div>
+
+
+	<div id="des">
+		
+	
+	</div>
+			
+		</div>
 </li>
 
 </body>
